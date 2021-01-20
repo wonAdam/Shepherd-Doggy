@@ -18,7 +18,7 @@ public class PlayerMover : Mover
 
         Move(desiredDir);
         Rotate(desiredDir);
-        ProcessAnim(cameraForward, desiredDir);
+        ProcessAnim(cameraForward, desiredDir, wasd);
     }
 
     private void Move(Vector3 dir) => characterController.Move(dir * speed * Time.deltaTime);
@@ -31,10 +31,14 @@ public class PlayerMover : Mover
                 Quaternion.LookRotation(lookDir, Vector3.up), 
                 rot * Time.deltaTime);
     }
-    private void ProcessAnim(Vector3 cameraForward, Vector3 moveDir)
+    private void ProcessAnim(Vector3 cameraForward, Vector2 desiredDir , Vector2 wasd)
     {
-        Quaternion ToLocal = Quaternion.FromToRotation(transform.forward, cameraForward);
-        anim.SetFloat("MoveX", (ToLocal * moveDir).x);
-        anim.SetFloat("MoveZ", (ToLocal * moveDir).z);
+        Vector3 worldCurrDir = new Vector3(transform.forward.x, 0f, transform.forward.z);
+        Quaternion toLocal = Quaternion.FromToRotation(worldCurrDir, cameraForward);
+
+        Vector3 wasdTo3D = new Vector3(wasd.x, 0f, wasd.y);
+
+        anim.SetFloat("MoveX", (toLocal * wasdTo3D.normalized).x);
+        anim.SetFloat("MoveZ", (toLocal * wasdTo3D.normalized).z);
     }
 }
