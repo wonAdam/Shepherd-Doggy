@@ -1,15 +1,19 @@
 ﻿using UnityEngine;
 
-public class PlayerMover : Mover
+public class PlayerMover : MonoBehaviour
 {
-    private CharacterController characterController;
+    private Rigidbody rigidbody;
+    private MovingEntity movingEntity;
+    private Animator anim;
 
     private void Start()
     {
-        characterController = GetComponent<CharacterController>();
+        movingEntity = GetComponent<MovingEntity>();
+        rigidbody = GetComponent<Rigidbody>();
+        anim = GetComponentInChildren<Animator>();
     }
 
-    public override void ProcessInput(Vector2 wasd)
+    public void ProcessInput(Vector2 wasd)
     {
         Vector3 cameraForward = Camera.main.transform.forward;
         cameraForward = new Vector3(cameraForward.x, 0f, cameraForward.z);
@@ -21,7 +25,8 @@ public class PlayerMover : Mover
         ProcessAnim(cameraForward, desiredDir, wasd);
     }
 
-    private void Move(Vector3 dir) => characterController.Move(dir * speed * Time.deltaTime);
+    private void Move(Vector3 dir) => rigidbody.velocity = 
+        Vector3.Dot(transform.forward, dir.normalized) * dir * movingEntity.maxSpeed * Time.deltaTime;
 
     private void Rotate(Vector3 lookDir)
     {
@@ -29,7 +34,7 @@ public class PlayerMover : Mover
             transform.rotation = Quaternion.Slerp(
                 transform.rotation, 
                 Quaternion.LookRotation(lookDir, Vector3.up), 
-                rot * Time.deltaTime);
+                movingEntity.turnRate * Time.deltaTime);
     }
     private void ProcessAnim(Vector3 cameraForward, Vector2 desiredDir , Vector2 wasd)
     {

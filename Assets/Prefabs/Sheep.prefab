@@ -9,10 +9,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 783459162353072307}
-  - component: {fileID: 783459162353072309}
-  - component: {fileID: 783459162353072306}
-  - component: {fileID: 783459162353072311}
-  - component: {fileID: 783459162353072308}
+  - component: {fileID: 4793511416145258390}
+  - component: {fileID: 4337205587434054121}
+  - component: {fileID: 7056627189312509950}
+  - component: {fileID: 7797502778221883898}
   m_Layer: 9
   m_Name: Sheep
   m_TagString: Untagged
@@ -35,7 +35,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!54 &783459162353072309
+--- !u!54 &4793511416145258390
 Rigidbody:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -51,20 +51,20 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 112
   m_CollisionDetection: 0
---- !u!65 &783459162353072306
-BoxCollider:
+--- !u!135 &4337205587434054121
+SphereCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 783459162353072304}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 9da6899f2c070404780d0a2b91b1c81d, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
-  m_Size: {x: 0.31, y: 0.33, z: 0.4}
+  m_Radius: 0.23
   m_Center: {x: 0, y: 0, z: 0}
---- !u!114 &783459162353072311
+--- !u!114 &7056627189312509950
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -73,37 +73,42 @@ MonoBehaviour:
   m_GameObject: {fileID: 783459162353072304}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4baefa67909c9794997b2c1e6955f60f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  mover: {fileID: 783459162353072308}
-  moveDir: {x: 0, y: 0}
-  evadeLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  panicRange: 2.32
-  wallDetectionRange: 2
-  wallLayer:
-    serializedVersion: 2
-    m_Bits: 0
---- !u!114 &783459162353072308
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 783459162353072304}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8e47444eb9edd7a46989a1ea41949b4f, type: 3}
+  m_Script: {fileID: 11500000, guid: c57d3ca237792234cb47dfbb7221e70a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   deceleration: 3
-  speed: 1.2
-  rot: 2
-  anim: {fileID: 0}
-  acceleration: 15
-  _dir: {x: 0, y: 0}
+  maxSpeed: 1.5
+  panicRange: 4
+  turnRate: 7
+  target: {fileID: 0}
+  steeringBehavior: {fileID: 0}
+  rigidbody: {fileID: 0}
+  state: 4
+  steeringForce: {x: 0, y: 0, z: 0}
+  acceleration: {x: 0, y: 0, z: 0}
+--- !u!114 &7797502778221883898
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 783459162353072304}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f7923695762d3b24abd6f3e4dff4e879, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  groupBehaviorRadius: 3
+  _dist: 0
+  _arrive_desiredVelocity: {x: 0, y: 0, z: 0}
+  _pursuit_expected: {x: 0, y: 0, z: 0}
+  centerOfMass: {x: 0, y: 0, z: 0}
+  separationFactor: 0
+  neighbors: []
+  clampWeight: 0
+  fleeWeight: 0.5
+  cohesionWeight: 0.3
+  separationWeight: 0.2
 --- !u!1001 &783459163655829982
 PrefabInstance:
   m_ObjectHideFlags: 0
