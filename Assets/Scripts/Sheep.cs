@@ -39,6 +39,8 @@ public class Sheep : MovingEntity
 
     private void Rotate(Vector3 lookDir)
     {
+        if (lookDir == Vector3.zero) return;
+
         if (lookDir.magnitude > Mathf.Epsilon)
             transform.rotation = Quaternion.Slerp(
                 transform.rotation,

@@ -19,14 +19,31 @@ public class Player : MovingEntity
     void Update()
     {
 
-        Vector2 WASDInput = GetInput();
-        Vector3 inputVec3 = Coordinate.InputToVector3(WASDInput);
-        Vector3 speed = inputVec3 * maxSpeed / GetComponent<Rigidbody>().mass;
-        rigidbody.velocity = Vector3.Dot(transform.forward, speed.normalized) * speed.normalized * maxSpeed;
+        //Vector2 WASDInput = GetInput();
+        //Vector3 inputVec3 = Coordinate.InputToVector3(WASDInput);
+        //Vector3 speed = inputVec3 * maxSpeed / GetComponent<Rigidbody>().mass;
+        //rigidbody.velocity = Vector3.Dot(transform.forward, speed.normalized) * speed.normalized * maxSpeed;
+
+        //Rotate(inputVec3);
+        //ProcessAnim(Camera.main.transform.forward, inputVec3);
+
+    }
+
+    public void JoystickInput(Vector2 input)
+    {
+        if(input == Vector2.zero)
+        {
+            rigidbody.velocity -= rigidbody.velocity.normalized * (rigidbody.velocity.magnitude * Time.deltaTime / 3f);
+            ProcessAnim(Camera.main.transform.forward, rigidbody.velocity);
+            return;
+        }
+
+        Vector3 inputVec3 = Coordinate.InputToVector3(input);
+        Vector3 speed = inputVec3 / GetComponent<Rigidbody>().mass;
+        rigidbody.velocity = Vector3.Dot(transform.forward, speed.normalized) * speed * maxSpeed;
 
         Rotate(inputVec3);
         ProcessAnim(Camera.main.transform.forward, inputVec3);
-
     }
     private Vector2 GetInput()
     {
