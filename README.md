@@ -12,3 +12,12 @@ Youtube: Not yet<br>
 
 <hr>
 
+<br>
+
+- Asset Store
+
+직접 프로젝트를 다운받아 에디터에서 실행하기 위해서는 에셋들을 "_AssetStore" 폴더에 넣어주세요.
+
+1. [Joystick Pack](https://assetstore.unity.com/packages/tools/input-management/joystick-pack-107631)
+2. [My Farm - Low Poly Farm Pack](https://assetstore.unity.com/packages/3d/environments/my-farm-low-poly-farm-pack-162147)
+3. [LowPoly Dogs pack](https://assetstore.unity.com/packages/3d/characters/animals/lowpoly-dogs-pack-164065)
