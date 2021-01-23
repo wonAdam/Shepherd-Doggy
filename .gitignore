@@ -68,6 +68,7 @@ crashlytics-build.properties
 
 # Assets from Asset Store
 /[Aa]ssets/_AssetStore/*
+!/[Aa]ssets/_AssetStore/.gitkeep 
 
 # Temporary auto-generated Android Assets
 /[Aa]ssets/[Ss]treamingAssets/aa.meta
