@@ -13,7 +13,6 @@ public class DragDetection : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         this.screenCenter = new Vector2(Screen.width / 2f, Screen.height / 2f);
     }
 
-
     public void OnBeginDrag(PointerEventData eventData)
     {
         if (Input.touchCount >= 1)
@@ -64,9 +63,6 @@ public class DragDetection : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
 
             camWork.RotateCamera(h / 100f, v / 100f);
 
-            Debug.Log("OnDrag touch 1 " + currPointFromLastPoint);
-            Debug.Log("hv " + h + " " + v);
-
             lastMousePositionOneTouch = Input.GetTouch(0).position;
         }
     }
@@ -76,18 +72,4 @@ public class DragDetection : MonoBehaviour, IBeginDragHandler, IDragHandler, IEn
         
     }
 
-    private void OnMouseDrag()
-    {
-        Debug.Log("OnMouseDrag");
-
-        if (Input.touchCount == 2)
-        {
-            Debug.Log("touch 2");
-        }
-
-        else if (Input.touchCount == 1)
-        {
-            Debug.Log("touch 1");
-        }
-    }
 }

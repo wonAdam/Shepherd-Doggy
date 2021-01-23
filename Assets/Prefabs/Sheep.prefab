@@ -77,7 +77,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   deceleration: 3
-  maxSpeed: 1.5
+  maxSpeed: 3.5
   panicRange: 4
   turnRate: 7
   target: {fileID: 0}

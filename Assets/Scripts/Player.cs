@@ -19,13 +19,15 @@ public class Player : MovingEntity
     void Update()
     {
 
-        //Vector2 WASDInput = GetInput();
-        //Vector3 inputVec3 = Coordinate.InputToVector3(WASDInput);
-        //Vector3 speed = inputVec3 * maxSpeed / GetComponent<Rigidbody>().mass;
-        //rigidbody.velocity = Vector3.Dot(transform.forward, speed.normalized) * speed.normalized * maxSpeed;
+        Vector2 WASDInput = GetInput();
+        if (WASDInput.magnitude < Mathf.Epsilon) return;
 
-        //Rotate(inputVec3);
-        //ProcessAnim(Camera.main.transform.forward, inputVec3);
+        Vector3 inputVec3 = Coordinate.InputToVector3(WASDInput);
+        Vector3 speed = inputVec3 * maxSpeed / GetComponent<Rigidbody>().mass;
+        rigidbody.velocity = Vector3.Dot(transform.forward, speed.normalized) * speed.normalized * maxSpeed;
+
+        Rotate(inputVec3);
+        ProcessAnim(Camera.main.transform.forward, inputVec3);
 
     }
 
