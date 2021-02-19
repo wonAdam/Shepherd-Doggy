@@ -6,7 +6,7 @@
 - [Programming-Game-AI-by-Example](https://github.com/wonAdam/Programming-Game-AI-by-Example) 프로젝트의 Steering Behavior 응용 프로젝트입니다. <br>
 - 챕터3의 마지막 문장을 읽고 구현해본 프로젝트입니다. <br>
 Executable: [[Releases]](https://github.com/wonAdam/Shepherd-Doggy/releases/tag/1.0)<br>
-Youtube: Not yet<br>
+Youtube: [Link](https://youtu.be/OxsfepSOqeE)
 - Unity Engine Version : `2019.3.0f6` <br>
 
 <hr>
