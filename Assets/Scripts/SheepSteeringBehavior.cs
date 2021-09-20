@@ -8,6 +8,7 @@ public class SheepSteeringBehavior : SteeringBehavior
     [SerializeField] float fleeWeight;
     [SerializeField] float cohesionWeight;
     [SerializeField] float separationWeight;
+
     private void Start()
     {
         base.Start();
